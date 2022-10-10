@@ -1,13 +1,8 @@
-local colorscheme = astronvim.user_plugin_opts("colorscheme", nil, false)
-vim.api.nvim_command(
-  "colorscheme "
-    .. (vim.tbl_contains(vim.fn.getcompletion("", "color"), colorscheme) and colorscheme or "default_theme")
-)
-
 astronvim.vim_opts(astronvim.user_plugin_opts("options", {
   opt = {
     backspace = vim.opt.backspace + { "nostop" }, -- Don't stop backspace at insert
     clipboard = "unnamedplus", -- Connection to the system clipboard
+    cmdheight = 0, -- hide command line unless needed
     completeopt = { "menuone", "noselect" }, -- Options for insert mode completion
     copyindent = true, -- Copy the previous indentation on autoindenting
     cursorline = true, -- Highlight the text line of the cursor
@@ -26,6 +21,7 @@ astronvim.vim_opts(astronvim.user_plugin_opts("options", {
     scrolloff = 8, -- Number of lines to keep above and below the cursor
     shiftwidth = 2, -- Number of space inserted for indentation
     showmode = false, -- Disable showing modes in command line
+    showtabline = 2, -- always display tabline
     sidescrolloff = 8, -- Number of columns to keep at the sides of the cursor
     signcolumn = "yes", -- Always show the sign column
     smartcase = true, -- Case sensitivie searching
@@ -41,8 +37,6 @@ astronvim.vim_opts(astronvim.user_plugin_opts("options", {
     writebackup = false, -- Disable making a backup before overwriting a file
   },
   g = {
-    do_filetype_lua = 1, -- use filetype.lua
-    did_load_filetypes = 0, -- don't use filetype.vim
     highlighturl_enabled = true, -- highlight URLs by default
     mapleader = " ", -- set leader key
     zipPlugin = false, -- disable zip
@@ -63,5 +57,9 @@ astronvim.vim_opts(astronvim.user_plugin_opts("options", {
     loaded_zipPlugin = true, -- disable zip
     loaded_vimball = true, -- disable vimball
     loaded_vimballPlugin = true, -- disable vimball
+    cmp_enabled = true, -- enable completion at start
+    autopairs_enabled = true, -- enable autopairs at start
+    diagnostics_enabled = true, -- enable diagnostics at start
+    status_diagnostics_enabled = true, -- enable diagnostics in statusline
   },
 }))
